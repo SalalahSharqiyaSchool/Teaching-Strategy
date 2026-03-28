@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استراتيجيات التعليم الفعّال | دليل المعلم</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0d2137;
+  --blue:#1a4480;
+  --blue2:#2563a8;
+  --gold:#c8860a;
+  --gold2:#e8a020;
+  --cream:#faf7f2;
+  --cream2:#f0ebe0;
+  --text:#1a1a2e;
+  --muted:#5c6878;
+  --white:#ffffff;
+  --r:14px;
+  --rs:8px;
+  --shadow:0 4px 28px rgba(13,33,55,.12);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  direction:rtl;
+  line-height:1.7;
+  font-size:16px;
+}
+
+/* ── NAVBAR ── */
+.nav{
+  background:var(--navy);
+  position:sticky;top:0;z-index:999;
+  box-shadow:0 2px 20px rgba(0,0,0,.25);
+}
+.nav-inner{
+  max-width:1200px;margin:auto;
+  padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:66px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.brand-ico{
+  width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+}
+.brand-name{font-weight:700;font-size:1rem;line-height:1.2}
+.brand-sub{font-size:.72rem;opacity:.65;font-weight:400}
+.nav-links{display:flex;gap:4px}
+.nav-links a{
+  color:rgba(255,255,255,.78);text-decoration:none;
+  padding:7px 13px;border-radius:6px;
+  font-size:.88rem;font-weight:500;
+  transition:.2s;
+}
+.nav-links a:hover,.nav-links a.on{background:rgba(255,255,255,.12);color:#fff}
+.hbg{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:4px}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(150deg,var(--navy) 0%,var(--blue) 55%,#1e63b5 100%);
+  color:#fff;padding:88px 24px 68px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 20% 80%,rgba(200,134,10,.18) 0%,transparent 50%),
+    radial-gradient(circle at 80% 20%,rgba(255,255,255,.05) 0%,transparent 50%);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content{position:relative;z-index:1;max-width:780px;margin:auto}
+.badge{
+  display:inline-block;
+  background:rgba(200,134,10,.22);border:1px solid rgba(232,160,32,.45);
+  color:#f5c842;padding:5px 18px;border-radius:99px;
+  font-size:.83rem;font-weight:700;margin-bottom:22px;letter-spacing:.02em;
+}
+.hero h1{
+  font-family:'Noto Naskh Arabic',serif;
+  font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;
+  line-height:1.3;margin-bottom:18px;
+}
+.hero h1 span{color:var(--gold2)}
+.hero p{font-size:1.05rem;opacity:.85;max-width:580px;margin:0 auto 36px}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;border-radius:var(--rs);
+  font-family:'Tajawal',sans-serif;font-weight:700;font-size:.93rem;
+  text-decoration:none;cursor:pointer;border:none;transition:.22s;
+}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,134,10,.4)}
+.btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.45);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.stats{
+  display:flex;justify-content:center;gap:48px;flex-wrap:wrap;
+  margin-top:56px;padding-top:34px;
+  border-top:1px solid rgba(255,255,255,.15);
+}
+.stat-num{display:block;font-size:2rem;font-weight:900;color:var(--gold2);line-height:1}
+.stat-lbl{font-size:.82rem;opacity:.7;margin-top:4px}
+
+/* ── SECTION SHELL ── */
+.sec{padding:68px 24px;max-width:1200px;margin:auto}
+.sec-hd{text-align:center;margin-bottom:50px}
+.tag{
+  display:inline-block;
+  background:rgba(26,68,128,.1);color:var(--blue2);
+  padding:4px 14px;border-radius:99px;
+  font-size:.78rem;font-weight:700;letter-spacing:.04em;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.sec-hd h2{
+  font-family:'Noto Naskh Arabic',serif;
+  font-size:clamp(1.4rem,3vw,2.1rem);font-weight:700;
+  color:var(--navy);margin-bottom:10px;
+}
+.sec-hd p{color:var(--muted);max-width:560px;margin:auto;font-size:.95rem}
+
+/* ── INTRO CARDS ── */
+.intro-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;max-width:900px;margin:auto;
+}
+.info-card{
+  background:var(--white);border-radius:var(--r);
+  padding:30px 26px;box-shadow:var(--shadow);
+  border-top:4px solid var(--gold);
+  transition:.25s;
+}
+.info-card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(13,33,55,.16)}
+.info-card .ico{font-size:2rem;margin-bottom:14px}
+.info-card h3{color:var(--navy);font-weight:700;font-size:1rem;margin-bottom:8px}
+.info-card p{color:var(--muted);font-size:.88rem;line-height:1.7}
+
+/* ── STRATEGIES GRID ── */
+.alt-bg{background:var(--cream2);padding:68px 0}
+.strat-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.s-card{
+  background:var(--white);border-radius:var(--r);
+  padding:26px 22px;box-shadow:var(--shadow);
+  border-right:4px solid transparent;
+  transition:.25s;position:relative;overflow:hidden;
+}
+.s-card::before{
+  content:'';position:absolute;bottom:-20px;left:-20px;
+  width:80px;height:80px;border-radius:50%;
+  background:rgba(200,134,10,.06);
+}
+.s-card:hover{border-right-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 32px rgba(13,33,55,.14)}
+.s-ico{
+  width:48px;height:48px;border-radius:11px;
+  background:linear-gradient(135deg,var(--navy),var(--blue2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin-bottom:14px;
+}
+.s-card h3{color:var(--navy);font-weight:700;font-size:1rem;margin-bottom:7px}
+.s-card p{color:var(--muted);font-size:.85rem;line-height:1.65}
+
+/* ── SUBJECT TABS ── */
+.tabs-row{
+  display:flex;flex-wrap:wrap;gap:8px;
+  justify-content:center;margin-bottom:34px;
+}
+.tab{
+  display:flex;align-items:center;gap:6px;
+  padding:9px 17px;border-radius:99px;
+  border:2px solid transparent;background:var(--white);
+  color:var(--muted);font-family:'Tajawal',sans-serif;
+  font-weight:600;font-size:.86rem;cursor:pointer;
+  box-shadow:0 2px 8px rgba(13,33,55,.07);transition:.2s;
+}
+.tab:hover{border-color:var(--gold);color:var(--navy)}
+.tab.on{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 4px 16px rgba(13,33,55,.25)}
+.panel{display:none}
+.panel.on{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.subj-box{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.subj-head{padding:32px 36px;color:#fff;position:relative;overflow:hidden}
+.subj-head::after{
+  content:attr(data-icon);
+  position:absolute;left:24px;top:50%;transform:translateY(-50%);
+  font-size:96px;opacity:.1;line-height:1;
+}
+.subj-head h2{font-family:'Noto Naskh Arabic',serif;font-size:1.5rem;font-weight:700;margin-bottom:8px}
+.subj-head p{font-size:.9rem;opacity:.85;max-width:540px}
+.subj-body{padding:34px}
+.ac-list{display:flex;flex-direction:column;gap:14px}
+.ac{border:1px solid #e5dfd4;border-radius:var(--rs);overflow:hidden}
+.ac-head{
+  display:flex;align-items:center;gap:12px;
+  padding:15px 20px;background:#faf8f4;
+  cursor:pointer;transition:.18s;
+}
+.ac-head:hover{background:#f2ece0}
+.ac-num{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:var(--navy);color:#fff;
+  font-size:.78rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.ac-head h4{flex:1;font-size:.95rem;font-weight:700;color:var(--navy)}
+.ac-arr{color:var(--muted);font-size:.9rem;transition:.25s}
+.ac.open .ac-arr{transform:rotate(180deg)}
+.ac-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.ac.open .ac-body{max-height:600px}
+.ac-inner{padding:20px 20px 22px 58px;border-top:1px solid #e5dfd4}
+.ac-inner p{color:var(--muted);font-size:.87rem;margin-bottom:12px;line-height:1.7}
+.steps{list-style:none;display:flex;flex-direction:column;gap:7px}
+.steps li{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;line-height:1.6}
+.steps li::before{content:'✦';color:var(--gold);font-size:.65rem;margin-top:5px;flex-shrink:0}
+.tip{
+  margin-top:13px;padding:11px 15px;
+  background:rgba(26,68,128,.06);
+  border-right:3px solid var(--gold);border-radius:0 var(--rs) var(--rs) 0;
+  font-size:.83rem;color:var(--navy);
+}
+.tip strong{display:block;margin-bottom:3px}
+
+/* ── IMPLEMENTATION ── */
+.impl-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;counter-reset:impl;
+}
+.impl-card{
+  background:var(--white);border-radius:var(--r);
+  padding:26px 20px;box-shadow:var(--shadow);
+  counter-increment:impl;position:relative;transition:.22s;
+}
+.impl-card:hover{transform:translateY(-3px)}
+.impl-card::before{
+  content:counter(impl,decimal-leading-zero);
+  position:absolute;top:16px;left:16px;
+  font-size:1.8rem;font-weight:900;
+  color:rgba(13,33,55,.06);font-family:'Tajawal',sans-serif;
+}
+.impl-ico{
+  width:44px;height:44px;border-radius:10px;
+  background:rgba(200,134,10,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:12px;
+}
+.impl-card h3{color:var(--navy);font-weight:700;font-size:.97rem;margin-bottom:7px}
+.impl-card p{color:var(--muted);font-size:.84rem;line-height:1.65}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;border-radius:var(--r);box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;background:var(--white);font-size:.87rem}
+thead th{background:var(--navy);color:#fff;padding:14px 18px;text-align:right;font-weight:700}
+tbody td{padding:12px 18px;border-bottom:1px solid #eee9df;vertical-align:top;line-height:1.55}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#faf7f2}
+tbody td:first-child{font-weight:700;color:var(--blue2)}
+
+/* ── RESOURCES ── */
+.res-bg{background:var(--navy);padding:68px 0}
+.res-bg .tag{background:rgba(255,255,255,.1);color:#f5c842}
+.res-bg .sec-hd h2{color:#fff}
+.res-bg .sec-hd p{color:rgba(255,255,255,.65)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.res-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r);padding:24px 20px;color:#fff;
+  text-decoration:none;display:block;transition:.22s;cursor:pointer;
+}
+.res-card:hover{background:rgba(255,255,255,.13);transform:translateY(-3px)}
+.res-ico{font-size:2rem;margin-bottom:10px;display:block}
+.res-card h4{font-weight:700;font-size:.97rem;margin-bottom:6px}
+.res-card p{font-size:.82rem;opacity:.68;line-height:1.6}
+
+/* ── MODAL (Planner) ── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--white);border-radius:var(--r);
+  width:100%;max-width:680px;max-height:90vh;overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  animation:fadeUp .3s ease;
+}
+.modal-head{
+  background:var(--navy);color:#fff;
+  padding:22px 28px;border-radius:var(--r) var(--r) 0 0;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-head h3{font-size:1.1rem;font-weight:700}
+.modal-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.4rem;cursor:pointer;line-height:1}
+.modal-close:hover{color:#fff}
+.modal-body{padding:28px}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-weight:700;color:var(--navy);margin-bottom:7px;font-size:.9rem}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:10px 13px;
+  border:2px solid #ddd7cc;border-radius:var(--rs);
+  font-family:'Tajawal',sans-serif;font-size:.9rem;color:var(--text);
+  background:#faf8f4;transition:.2s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--gold)}
+.fg textarea{resize:vertical;min-height:80px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.plan-out{margin-top:20px;display:none}
+.plan-out h4{color:var(--navy);font-weight:700;font-size:1rem;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold)}
+.plan-row{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid #f0ebe0;font-size:.87rem}
+.plan-lbl{font-weight:700;color:var(--blue2);min-width:130px}
+.phase{
+  background:#faf7f2;border-right:3px solid var(--gold);
+  border-radius:0 var(--rs) var(--rs) 0;padding:13px 16px;margin:8px 0;
+}
+.phase .pt{font-weight:700;color:var(--navy);font-size:.9rem}
+.phase .pm{color:var(--gold);font-size:.8rem;font-weight:700}
+.phase .pd{color:var(--muted);font-size:.83rem;margin-top:4px}
+
+/* ── QUIZ MODAL ── */
+.quiz-wrap{max-width:100%}
+.q-card{display:none}
+.q-card.on{display:block;animation:fadeUp .3s ease}
+.q-num{color:var(--gold);font-weight:700;font-size:.82rem;margin-bottom:9px}
+.q-txt{font-family:'Noto Naskh Arabic',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:18px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{
+  padding:13px 17px;border:2px solid #ddd7cc;border-radius:var(--rs);
+  background:#faf8f4;text-align:right;cursor:pointer;
+  font-family:'Tajawal',sans-serif;font-size:.9rem;color:var(--text);
+  transition:.18s;
+}
+.opt:hover{border-color:var(--gold);background:#fef5e4}
+.opt.sel{border-color:var(--navy);background:rgba(26,68,128,.07);color:var(--navy);font-weight:700}
+.prog-bar{height:5px;background:#e5dfd4;border-radius:99px;margin-bottom:24px;overflow:hidden}
+.prog-fill{height:100%;background:var(--gold);border-radius:99px;transition:.4s}
+.result{display:none;text-align:center;padding:10px 0}
+.result .r-ico{font-size:3.2rem;margin-bottom:14px}
+.result .r-title{font-family:'Noto Naskh Arabic',serif;font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.result .r-desc{color:var(--muted);font-size:.88rem;line-height:1.75;margin-bottom:18px}
+.rec{padding:10px 15px;background:rgba(200,134,10,.08);border-right:3px solid var(--gold);border-radius:0 var(--rs) var(--rs) 0;font-size:.86rem;color:var(--navy);margin-bottom:8px;text-align:right}
+
+/* ── FOOTER ── */
+footer{background:#09182a;color:rgba(255,255,255,.55);text-align:center;padding:32px 24px;font-size:.82rem}
+footer strong{color:var(--gold2)}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  .hbg{display:block}
+  .nav-links{
+    display:none;position:absolute;top:66px;right:0;left:0;
+    background:var(--navy);flex-direction:column;
+    padding:14px;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.2);
+  }
+  .nav-links.open{display:flex}
+  .nav{position:relative}
+  .hero{padding:60px 20px 48px}
+  .stats{gap:24px}
+  .subj-head{padding:22px 22px}
+  .subj-body{padding:20px}
+  .ac-inner{padding:15px}
+  .fg-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-ico">📚</div>
+      <div>
+        <div class="brand-name">استراتيجيات التعليم</div>
+        <div class="brand-sub">دليل المعلم الاحترافي</div>
+      </div>
+    </a>
+    <button class="hbg" id="hbg">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#strategies" class="on">الاستراتيجيات</a>
+      <a href="#subjects">المواد الدراسية</a>
+      <a href="#implementation">التطبيق</a>
+      <a href="#comparison">المقارنة</a>
+      <a href="#resources">الموارد</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">🎯 دليل تعليمي شامل للمعلمين</div>
+    <h1>استراتيجيات التعليم الفعّال<br><span>نحو تعلّم أعمق وأثر أدوم</span></h1>
+    <p>اكتشف أبرز استراتيجيات التدريس الحديثة وكيفية توظيفها في مختلف المواد الدراسية لتحقيق نتائج تعليمية متميزة</p>
+    <div class="cta-row">
+      <a href="#strategies" class="btn btn-gold">🔍 استكشف الاستراتيجيات</a>
+      <a href="#subjects" class="btn btn-ghost">📖 تصفّح حسب المادة</a>
+    </div>
+    <div class="stats">
+      <div>
+        <span class="stat-num" data-v="12" data-s="+">12+</span>
+        <div class="stat-lbl">استراتيجية تعليمية</div>
+      </div>
+      <div>
+        <span class="stat-num" data-v="8" data-s="">8</span>
+        <div class="stat-lbl">مواد دراسية</div>
+      </div>
+      <div>
+        <span class="stat-num" data-v="40" data-s="+">40+</span>
+        <div class="stat-lbl">نشاطاً تطبيقياً</div>
+      </div>
+      <div>
+        <span class="stat-num" data-v="100" data-s="%">100%</span>
+        <div class="stat-lbl">مجاني ومفتوح</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INTRO ═══ -->
+<section class="sec" id="intro">
+  <div class="sec-hd">
+    <div class="tag">ما هي الاستراتيجية التعليمية؟</div>
+    <h2>مفهوم استراتيجيات التدريس</h2>
+    <p>الخطة المنظمة التي يتبعها المعلم لتحقيق الأهداف التعليمية بأفضل صورة ممكنة</p>
+  </div>
+  <div class="intro-grid">
+    <div class="info-card">
+      <div class="ico">🎯</div>
+      <h3>التعريف</h3>
+      <p>الأساليب والإجراءات المنظمة التي يتبعها المعلم لتيسير التعلم وتحقيق الأهداف، وتشمل طرق التدريس والأنشطة والوسائل والتقييم.</p>
+    </div>
+    <div class="info-card">
+      <div class="ico">💡</div>
+      <h3>أهمية الاستراتيجية</h3>
+      <p>تزيد من دافعية الطلاب وتُعمّق الفهم وتُطوّر مهارات التفكير العليا وتحقق نتائج تعليمية أفضل وأدوم في ذاكرة الطالب.</p>
+    </div>
+    <div class="info-card">
+      <div class="ico">⚡</div>
+      <h3>المعيار الأساسي</h3>
+      <p>لا توجد استراتيجية مثلى لجميع المواقف. المعلم الناجح يُنوّع استراتيجياته ويختار الأنسب حسب الطلاب والمحتوى والهدف.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STRATEGIES ═══ -->
+<section id="strategies" class="alt-bg">
+  <div class="sec" style="padding-top:0">
+    <div class="sec-hd">
+      <div class="tag">أنواع الاستراتيجيات</div>
+      <h2>أبرز استراتيجيات التعليم الحديثة</h2>
+      <p>تصنيف شامل لأهم الاستراتيجيات التعليمية المعتمدة في الممارسة الصفية المعاصرة</p>
+    </div>
+    <div class="strat-grid">
+      <div class="s-card"><div class="s-ico">🤝</div><h3>التعلم التعاوني</h3><p>عمل مجموعات صغيرة لتحقيق هدف مشترك مع تعزيز التواصل والمسؤولية الجماعية.</p></div>
+      <div class="s-card"><div class="s-ico">🔍</div><h3>التعلم بالاستقصاء</h3><p>يطرح الطالب أسئلة ويبحث عن إجاباتها بالتجربة والملاحظة لينمّي روح البحث العلمي.</p></div>
+      <div class="s-card"><div class="s-ico">🧩</div><h3>التعلم القائم على المشاريع</h3><p>مشاريع حقيقية تربط المادة بالحياة وتُكسب الطلاب مهارات التخطيط والتنفيذ.</p></div>
+      <div class="s-card"><div class="s-ico">🎭</div><h3>لعب الأدوار والمحاكاة</h3><p>تمثيل أدوار في سياقات محاكاة يُعمّق الفهم ويُنمّي التعاطف والإبداع.</p></div>
+      <div class="s-card"><div class="s-ico">💭</div><h3>العصف الذهني</h3><p>توليد أكبر قدر من الأفكار في وقت محدد دون حكم أو نقد ثم تصنيفها وتقييمها.</p></div>
+      <div class="s-card"><div class="s-ico">🔄</div><h3>التعلم المتمايز</h3><p>تكييف التعليم وفق الفروق الفردية من حيث المستوى والأسلوب والاهتمام.</p></div>
+      <div class="s-card"><div class="s-ico">❓</div><h3>استراتيجية السؤال والجواب</h3><p>أسئلة متدرجة من الحفظ إلى التحليل والتقييم لبناء التفكير الناقد تدريجياً.</p></div>
+      <div class="s-card"><div class="s-ico">🗺️</div><h3>الخرائط المفاهيمية</h3><p>تمثيل المعلومات بصرياً لإظهار العلاقات بين المفاهيم وتنظيم الأفكار منطقياً.</p></div>
+      <div class="s-card"><div class="s-ico">🏠</div><h3>الفصل المقلوب</h3><p>الشرح في البيت عبر مقاطع ويُخصص وقت الصف للتطبيق والنقاش.</p></div>
+      <div class="s-card"><div class="s-ico">🎮</div><h3>التعلم بالألعاب</h3><p>توظيف عناصر الألعاب لزيادة الدافعية والمشاركة الإيجابية.</p></div>
+      <div class="s-card"><div class="s-ico">📊</div><h3>التقييم من أجل التعلم</h3><p>التقييم التكويني المستمر لتعديل المسار وتعزيز نقاط القوة فورياً.</p></div>
+      <div class="s-card"><div class="s-ico">✏️</div><h3>الكتابة للتفكير</h3><p>توظيف الكتابة أداةً للتعلم: يوميات وتلخيص وتحليل كتابي.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUBJECTS ═══ -->
+<section class="sec" id="subjects">
+  <div class="sec-hd">
+    <div class="tag">حسب المادة الدراسية</div>
+    <h2>الاستراتيجيات الأنسب لكل مادة</h2>
+    <p>اختر المادة لاستعراض الاستراتيجيات الموصى بها مع أمثلة تطبيقية مفصّلة</p>
+  </div>
+
+  <div class="tabs-row">
+    <button class="tab on" data-tab="arabic">📝 اللغة العربية</button>
+    <button class="tab" data-tab="english">🌐 الإنجليزية</button>
+    <button class="tab" data-tab="math">🔢 الرياضيات</button>
+    <button class="tab" data-tab="islamic">☪️ الإسلامية</button>
+    <button class="tab" data-tab="science">🔬 العلوم</button>
+    <button class="tab" data-tab="biology">🧬 الأحياء</button>
+    <button class="tab" data-tab="chemistry">⚗️ الكيمياء</button>
+    <button class="tab" data-tab="physics">⚛️ الفيزياء</button>
+  </div>
+
+  <!-- ARABIC -->
+  <div class="panel on" id="arabic">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#0d2137,#1a4480)" data-icon="📝">
+        <h2>اللغة العربية</h2>
+        <p>استراتيجيات تنمي المهارات اللغوية الأربع في بيئة تواصلية حيّة ومثرية</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>القراءة الموجّهة والاستجابة النقدية</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>تدريب الطلاب على قراءة النصوص بعيون ناقدة واستخلاص المعاني والمواقف والقيم الضمنية.</p>
+              <ul class="steps">
+                <li>يقرأ المعلم النص بصوت عالٍ مع التوقف للتساؤل</li>
+                <li>يُوجّه الطلاب لتحديد الفكرة الرئيسية والأفكار الفرعية</li>
+                <li>يناقش الطلاب الأساليب اللغوية والصور البيانية</li>
+                <li>يكتب كل طالب تعليقاً موجزاً على النص</li>
+              </ul>
+              <div class="tip"><strong>💡 مثال:</strong> نص أدبي عن البيئة العُمانية — يحلل الطلاب الصور الشعرية ويقارنون بين أسلوبين.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>ورش الكتابة الإبداعية التشاركية</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>يتعاون الطلاب في إنتاج نصوص إبداعية مع التركيز على مراحل الكتابة: التخطيط والصياغة والمراجعة.</p>
+              <ul class="steps">
+                <li>تقسيم الطلاب ومنح كل مجموعة بداية قصة</li>
+                <li>كل مجموعة تكمل القصة ثم تتبادلها للمراجعة</li>
+                <li>عرض القصص وتقديم تغذية راجعة بنّاءة</li>
+              </ul>
+              <div class="tip"><strong>💡 مثال:</strong> "أكتب قصيدتي" — يصف الطلاب مشهداً طبيعياً من بيئتهم المحلية.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">3</div><h4>المناظرة والحوار اللغوي المنظّم</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>يتدرب الطلاب على التعبير الشفوي الراقي والإقناع والاستماع الفعّال عبر مناظرات منظمة.</p>
+              <ul class="steps">
+                <li>اختيار قضية: "الأدب الرقمي أم الورقي؟"</li>
+                <li>تقسيم مؤيد ومعارض مع وقت للتحضير</li>
+                <li>تقييم جودة الحجج وسلامة اللغة</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="panel" id="english">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#0d3351,#1565a8)" data-icon="🌐">
+        <h2>اللغة الإنجليزية</h2>
+        <p>خلق بيئة تواصلية حقيقية تُحفّز الطلاب على الاستخدام الفعلي للغة في سياقات متنوعة</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>التعلم التواصلي (CLT)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>يُستخدم فيه التواصل الحقيقي هدفاً ووسيلةً، مع التركيز على المعنى لا القاعدة فحسب.</p>
+              <ul class="steps">
+                <li>محادثات يومية حقيقية داخل الصف (English Only Zone)</li>
+                <li>تمثيل مواقف حياتية: عند الطبيب، في السوق</li>
+                <li>إعداد برنامج إذاعي صفي باللغة الإنجليزية</li>
+              </ul>
+              <div class="tip"><strong>💡 نشاط:</strong> Role-play "Book a hotel room" — طالب نزيل وآخر موظف استقبال.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>التعلم القائم على المهمة (TBL)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>مهمة حقيقية ذات معنى يُنجزها الطلاب باللغة طبيعياً دون تركيز مسبق على القاعدة.</p>
+              <ul class="steps">
+                <li>مهمة: "Plan a class trip" — تحدث وكتابة بالإنجليزية</li>
+                <li>ما قبل المهمة: تقديم المفردات اللازمة</li>
+                <li>بعد المهمة: عرض النتائج والتأمل اللغوي</li>
+              </ul>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">3</div><h4>التعلم بالقصة (Storytelling)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>توظيف القصص لتقديم المفردات في سياق ممتع يجعل التعلم أكثر استدامة.</p>
+              <ul class="steps">
+                <li>يروي المعلم قصة مصورة ويتوقف: "What happens next?"</li>
+                <li>الطلاب يُعيدون السرد بكلماتهم</li>
+                <li>يكتبون نهاية بديلة للقصة</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MATH -->
+  <div class="panel" id="math">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#0a3d1f,#1a7a3a)" data-icon="🔢">
+        <h2>الرياضيات</h2>
+        <p>تطوير التفكير المنطقي وحل المشكلات وربط المفاهيم الرياضية بالواقع العملي</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>التعلم بحل المشكلات (PBL)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>مشكلة رياضية حقيقية يسعى الطلاب لحلها بأساليب متعددة، ينمّي الإبداع والمثابرة.</p>
+              <ul class="steps">
+                <li>طرح مشكلة: "احسب تكلفة تبليط الملعب المدرسي"</li>
+                <li>وضع خطة الحل وتحديد المعطيات اللازمة</li>
+                <li>مناقشة أكثر من طريقة للحل</li>
+                <li>تعميم القاعدة على حالات مشابهة</li>
+              </ul>
+              <div class="tip"><strong>💡 مثال:</strong> "الطلاب يصمّمون جداول الحصص بأقل تعارض" — تطبيق رياضي حقيقي.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>النمذجة الرياضية والتمثيل البياني</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>ترجمة المشكلات إلى نماذج (معادلات، رسوم، جداول) وقراءتها وتفسيرها.</p>
+              <ul class="steps">
+                <li>جمع بيانات حقيقية من البيئة المدرسية</li>
+                <li>رسم مخططات بيانية وتفسير الاتجاهات</li>
+                <li>مقارنة النماذج المختلفة وتحديد الأفضل</li>
+              </ul>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">3</div><h4>التفكير بصوت عالٍ (Think Aloud)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>يُشارك الطلاب تفكيرهم أثناء الحل، مما يُشخّص الأخطاء ويُعزز الفهم الحقيقي.</p>
+              <ul class="steps">
+                <li>المعلم يحل بصوت عالٍ مُظهراً طريقة تفكيره</li>
+                <li>الطالب يحل ويُعلّق على خطواته بصوت</li>
+                <li>المجموعة تُقيّم منطق الحل لا النتيجة فحسب</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISLAMIC -->
+  <div class="panel" id="islamic">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#3b1155,#6a2fa0)" data-icon="☪️">
+        <h2>التربية الإسلامية</h2>
+        <p>ترسيخ القيم والعقيدة وربط التعاليم الدينية بالسلوك اليومي العملي</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>التعلم بالقدوة والقصة</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>قصص الأنبياء والصحابة نموذجاً حياً لاستخلاص القيم وتجسيدها في الواقع.</p>
+              <ul class="steps">
+                <li>قراءة القصة ثم تحليل القيم الواردة فيها</li>
+                <li>مناقشة: "كيف تُطبّق هذه القيمة في حياتك؟"</li>
+                <li>تصميم "بطاقة قيمة" بصرية جذابة</li>
+              </ul>
+              <div class="tip"><strong>💡 مثال:</strong> وصايا لقمان — كتابة رسالة لشخص نحبه بنفس الأسلوب الحكيم.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>الحوار السقراطي في الفقه</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>أسئلة عميقة تدفع الطلاب للتفكير في الأحكام الشرعية وحِكمها ومقاصد الشريعة.</p>
+              <ul class="steps">
+                <li>"لماذا حرّم الإسلام الكذب؟ ما أضراره على الفرد والمجتمع؟"</li>
+                <li>الطلاب يقدمون حججاً من القرآن والسنة والمنطق</li>
+                <li>توليد فهم أعمق للحكم الشرعي</li>
+              </ul>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">3</div><h4>مشاريع الخدمة المجتمعية</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>تجسيد القيم الإسلامية عبر مشاريع خدمة حقيقية في المدرسة أو المجتمع.</p>
+              <ul class="steps">
+                <li>تنظيم حملة تبرع لصالح محتاجين</li>
+                <li>زيارة دار رعاية المسنين وتوثيق التجربة</li>
+                <li>كتابة تقرير يربط الفعل بالقيمة الإسلامية</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCIENCE -->
+  <div class="panel" id="science">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#0d3b3b,#0f766e)" data-icon="🔬">
+        <h2>العلوم العامة</h2>
+        <p>ترسيخ المنهج التجريبي والفضول العلمي وتنمية التفكير الاستقصائي</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>دورة التعلم الاستقصائي 5E</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>نموذج تعليمي متكامل بخمس مراحل: الانخراط، الاستكشاف، الشرح، التعمّق، التقييم.</p>
+              <ul class="steps">
+                <li><strong>Engage:</strong> إثارة الفضول بظاهرة غير متوقعة</li>
+                <li><strong>Explore:</strong> الطلاب يجرّبون ويلاحظون</li>
+                <li><strong>Explain:</strong> ربط الملاحظات بالمفهوم العلمي</li>
+                <li><strong>Elaborate:</strong> تطبيق في سياق جديد</li>
+                <li><strong>Evaluate:</strong> تقييم الفهم والتفكير</li>
+              </ul>
+              <div class="tip"><strong>💡 مثال:</strong> "لماذا يطفو الجليد فوق الماء؟" — التجربة قبل الشرح!</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>التجريب المختبري التعاوني</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>مجموعات صغيرة تُصمّم وتُنفّذ تجارب فعلية وتُوثّق نتائجها بتقارير علمية.</p>
+              <ul class="steps">
+                <li>كل طالب له دور: قائد، مُجرّب، مُسجّل، مُقدّم</li>
+                <li>ورقة ملاحظة علمية منظمة</li>
+                <li>عرض النتائج ومناقشة الأخطاء والحلول</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BIOLOGY -->
+  <div class="panel" id="biology">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#0f3d1a,#1a7a32)" data-icon="🧬">
+        <h2>الأحياء</h2>
+        <p>ربط المفاهيم النظرية بالحياة الواقعية وتعزيز التفكير العلمي والبيئي</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>دراسة الحالة البيولوجية (Case Study)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>حالات حقيقية أو محاكاة لمشكلات بيولوجية (وباء، اختلال بيئي) لتطبيق المفاهيم.</p>
+              <ul class="steps">
+                <li>حالة: "انتشار فيروس جديد في قرية"</li>
+                <li>الطلاب يحللون الأعراض ويقترحون آلية العدوى</li>
+                <li>يقترحون خطة احتواء علمية مبررة</li>
+                <li>مقارنة مقترحاتهم بما فعله العلماء فعلاً</li>
+              </ul>
+              <div class="tip"><strong>💡 ربط:</strong> كوفيد-19 كدراسة حالة واقعية لوحدة المناعة والأمراض المعدية.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>التشريح الافتراضي والتقنيات الرقمية</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>أدوات رقمية وتشريحات افتراضية لدراسة تشريح الكائنات بشكل بصري تفاعلي.</p>
+              <ul class="steps">
+                <li>تطبيقات مثل Visible Body أو 3D4Medical</li>
+                <li>الطلاب يُعلّقون على الأجهزة بمصطلحات دقيقة</li>
+                <li>مقارنة بين تشريح كائنات مختلفة</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHEMISTRY -->
+  <div class="panel" id="chemistry">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#5c0a0a,#b52a2a)" data-icon="⚗️">
+        <h2>الكيمياء</h2>
+        <p>الفهم العميق للمفاهيم المجردة عبر التجربة والمحاكاة والتطبيق الحقيقي</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>التجارب الاستقصائية مفتوحة النهاية</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>الطلاب يُصمّمون التجربة بأنفسهم للإجابة عن سؤال محدد بدلاً من اتباع تعليمات جاهزة.</p>
+              <ul class="steps">
+                <li>السؤال: "ما العوامل المؤثرة في سرعة التفاعل؟"</li>
+                <li>الطلاب يفرضون فرضيات ويُصمّمون تجربتهم</li>
+                <li>التنفيذ والتسجيل والتحليل</li>
+                <li>استنتاج قانون وتعليل النتائج</li>
+              </ul>
+              <div class="tip"><strong>💡 السلامة:</strong> محاكاة رقمية (PhET) قبل الانتقال للمختبر الفعلي.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>الكيمياء في الحياة اليومية (STEM)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>ربط المفاهيم الكيميائية بتطبيقات حياتية ملموسة يجعل التعلم أكثر معنى.</p>
+              <ul class="steps">
+                <li>"كيف تعمل المنظفات؟" — درس الأحماض والقواعد</li>
+                <li>تحليل مكونات منتجات يومية</li>
+                <li>مشروع: صنع صابون طبيعي وتفسير التفاعلات</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHYSICS -->
+  <div class="panel" id="physics">
+    <div class="subj-box">
+      <div class="subj-head" style="background:linear-gradient(135deg,#111827,#1e3a5f)" data-icon="⚛️">
+        <h2>الفيزياء</h2>
+        <p>تجسيد المفاهيم المجردة عبر النمذجة والتجريب والربط بالتكنولوجيا الحديثة</p>
+      </div>
+      <div class="subj-body">
+        <div class="ac-list">
+          <div class="ac open">
+            <div class="ac-head"><div class="ac-num">1</div><h4>التعلم بالنمذجة الفيزيائية</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>بناء نماذج مادية أو رقمية لتمثيل الظواهر وتوقّع سلوكها في ظروف مختلفة.</p>
+              <ul class="steps">
+                <li>"ابنِ نموذجاً للطاقة الشمسية في المدرسة"</li>
+                <li>محاكاة PhET: تعديل المتغيرات وملاحظة التأثير</li>
+                <li>مقارنة النتائج بالتوقعات النظرية</li>
+              </ul>
+              <div class="tip"><strong>💡 مثال:</strong> نموذج المد والجزر — ربط الفيزياء بعُمان الساحلية البديعة.</div>
+            </div></div>
+          </div>
+          <div class="ac">
+            <div class="ac-head"><div class="ac-num">2</div><h4>التعليم بالأقران (Peer Instruction)</h4><span class="ac-arr">▾</span></div>
+            <div class="ac-body"><div class="ac-inner">
+              <p>سؤال مفاهيمي متعدد الخيارات → تصويت فردي → نقاش مع الأقران → إعادة التصويت.</p>
+              <ul class="steps">
+                <li>"ماذا يحدث للضوء عند انتقاله من الهواء للماء؟"</li>
+                <li>كل طالب يختار إجابته بمفرده</li>
+                <li>الطلاب يُقنعون بعضهم بإجاباتهم</li>
+                <li>الفارق بين التصويتين يُظهر أثر التعلم بالأقران</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══ IMPLEMENTATION ═══ -->
+<section id="implementation" class="alt-bg">
+  <div class="sec" style="padding-top:0">
+    <div class="sec-hd">
+      <div class="tag">كيف تُطبّق؟</div>
+      <h2>خطوات تطبيق الاستراتيجية بفاعلية</h2>
+      <p>إطار عملي من الاختيار الأمثل حتى التقييم المستمر</p>
+    </div>
+    <div class="impl-grid">
+      <div class="impl-card"><div class="impl-ico">🎯</div><h3>تحديد الهدف التعليمي</h3><p>ابدأ بتحديد ما تريد أن يعرفه الطالب أو يفعله بدقة، لأن الهدف يُحدد الاستراتيجية الأنسب.</p></div>
+      <div class="impl-card"><div class="impl-ico">👥</div><h3>دراسة خصائص الطلاب</h3><p>ضع في اعتبارك المستوى المعرفي والاهتمامات وأساليب التعلم والفروق الفردية.</p></div>
+      <div class="impl-card"><div class="impl-ico">📋</div><h3>التخطيط الدقيق</h3><p>خطة تفصيلية للحصة تتضمن التوقيت والأدوار والمواد والتسلسل المنطقي.</p></div>
+      <div class="impl-card"><div class="impl-ico">🚀</div><h3>التنفيذ المرن</h3><p>نفّذ مع مرونة في التكيّف مع الظروف الصفية وردود أفعال الطلاب اللحظية.</p></div>
+      <div class="impl-card"><div class="impl-ico">💬</div><h3>التغذية الراجعة الفورية</h3><p>تغذية راجعة بنّاءة وفورية تُوجّه الطلاب وتعالج الأخطاء بأثر رجعي.</p></div>
+      <div class="impl-card"><div class="impl-ico">📊</div><h3>التقييم والتأمل</h3><p>قيّم فاعلية الاستراتيجية وتأمّل ما نجح وما يحتاج تطوير وعدّل للمرة القادمة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPARISON ═══ -->
+<section class="sec" id="comparison">
+  <div class="sec-hd">
+    <div class="tag">جدول مقارنة</div>
+    <h2>مقارنة الاستراتيجيات الرئيسية</h2>
+    <p>دليل سريع لاختيار الاستراتيجية الأنسب لكل موقف</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>الاستراتيجية</th>
+          <th>المرحلة</th>
+          <th>حجم المجموعة</th>
+          <th>الهدف الرئيسي</th>
+          <th>المواد الأنسب</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>التعلم التعاوني</td><td>جميع المراحل</td><td>3–5 طلاب</td><td>التواصل والمسؤولية</td><td>العلوم، العربية، الاجتماعيات</td></tr>
+        <tr><td>حل المشكلات</td><td>المتوسطة والثانوية</td><td>فردي / ثنائي</td><td>التفكير الناقد</td><td>الرياضيات، الفيزياء، الكيمياء</td></tr>
+        <tr><td>التعلم بالمشاريع</td><td>المتوسطة والثانوية</td><td>4–6 طلاب</td><td>التطبيق والإنتاج</td><td>جميع المواد</td></tr>
+        <tr><td>لعب الأدوار</td><td>الابتدائية والمتوسطة</td><td>ثنائي / صغير</td><td>التعاطف والفهم</td><td>العربية، الإنجليزية، الإسلامية</td></tr>
+        <tr><td>الاستقصاء العلمي</td><td>المتوسطة والثانوية</td><td>فردي / ثنائي</td><td>البحث العلمي</td><td>العلوم، الأحياء، الكيمياء</td></tr>
+        <tr><td>الفصل المقلوب</td><td>الثانوية</td><td>صفي كامل</td><td>تعمّق التطبيق</td><td>الرياضيات، الفيزياء</td></tr>
+        <tr><td>العصف الذهني</td><td>جميع المراحل</td><td>صفي كامل</td><td>الإبداع والتوليد</td><td>العربية، الإسلامية، العلوم</td></tr>
+        <tr><td>الخرائط المفاهيمية</td><td>جميع المراحل</td><td>فردي / ثنائي</td><td>التنظيم والربط</td><td>الأحياء، العلوم، الكيمياء</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ RESOURCES ═══ -->
+<section class="res-bg" id="resources">
+  <div class="sec" style="padding:0">
+    <div class="sec-hd">
+      <div class="tag">أدوات إضافية</div>
+      <h2>موارد وأدوات للمعلم</h2>
+      <p>مجموعة مختارة لتطوير ممارستك التدريسية</p>
+    </div>
+    <div class="res-grid">
+      <div class="res-card" onclick="openModal('planner')">
+        <span class="res-ico">🗓️</span>
+        <h4>مخطط الدرس التفاعلي</h4>
+        <p>خطط لدرسك احترافياً حسب الاستراتيجية والمادة والوقت.</p>
+      </div>
+      <div class="res-card" onclick="openModal('quiz')">
+        <span class="res-ico">✅</span>
+        <h4>اكتشف أسلوبك التدريسي</h4>
+        <p>8 أسئلة تُحدد الاستراتيجيات الأنسب لشخصيتك.</p>
+      </div>
+      <div class="res-card" onclick="scrollTo({top:0,behavior:'smooth'})">
+        <span class="res-ico">📊</span>
+        <h4>جدول المقارنة الشامل</h4>
+        <p>مرجع سريع لأبرز الاستراتيجيات وخصائصها.</p>
+      </div>
+      <div class="res-card" onclick="document.getElementById('subjects').scrollIntoView({behavior:'smooth'})">
+        <span class="res-ico">📖</span>
+        <h4>التصفّح حسب المادة</h4>
+        <p>أمثلة تطبيقية مفصّلة لكل مادة دراسية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MODAL: PLANNER ═══ -->
+<div class="modal-overlay" id="modal-planner">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>🗓️ مخطط الدرس التفاعلي</h3>
+      <button class="modal-close" onclick="closeModal('planner')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="fg-row">
+        <div class="fg"><label>المادة الدراسية</label>
+          <select id="pm-subj">
+            <option>اللغة العربية</option><option>اللغة الإنجليزية</option>
+            <option>الرياضيات</option><option>التربية الإسلامية</option>
+            <option>العلوم</option><option>الأحياء</option>
+            <option>الكيمياء</option><option>الفيزياء</option>
+            <option>تقنية المعلومات</option>
+          </select></div>
+        <div class="fg"><label>الصف الدراسي</label>
+          <select id="pm-grade">
+            <option>الصف الخامس</option><option>الصف السادس</option>
+            <option>الصف السابع</option><option>الصف الثامن</option>
+            <option>الصف التاسع</option><option>الصف العاشر</option>
+          </select></div>
+      </div>
+      <div class="fg"><label>عنوان الدرس</label>
+        <input id="pm-title" type="text" placeholder="مثال: الضرب في الكسور العشرية"></div>
+      <div class="fg"><label>الهدف التعليمي</label>
+        <textarea id="pm-goal" placeholder="ما الذي تريد أن يعرفه الطالب في نهاية الدرس؟"></textarea></div>
+      <div class="fg-row">
+        <div class="fg"><label>الاستراتيجية</label>
+          <select id="pm-strat">
+            <option>التعلم التعاوني</option><option>حل المشكلات</option>
+            <option>التعلم بالمشاريع</option><option>لعب الأدوار</option>
+            <option>الاستقصاء والبحث</option><option>الفصل المقلوب</option>
+            <option>العصف الذهني</option><option>الخرائط المفاهيمية</option>
+          </select></div>
+        <div class="fg"><label>مدة الحصة</label>
+          <select id="pm-dur">
+            <option value="40">40 دقيقة</option>
+            <option value="45" selected>45 دقيقة</option>
+            <option value="50">50 دقيقة</option>
+            <option value="60">60 دقيقة</option>
+          </select></div>
+      </div>
+      <div class="fg"><label>الوسائل المتاحة</label>
+        <input id="pm-mat" type="text" placeholder="سبورة، أجهزة لوحية، ورق مقوى..."></div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="genPlan()">✨ توليد خطة الدرس</button>
+      <div class="plan-out" id="plan-out">
+        <h4>📋 خطة الدرس المُولَّدة</h4>
+        <div id="plan-content"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL: QUIZ ═══ -->
+<div class="modal-overlay" id="modal-quiz">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>✅ اكتشف أسلوبك التدريسي</h3>
+      <button class="modal-close" onclick="closeModal('quiz');resetQuiz()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="prog-bar"><div class="prog-fill" id="qfill" style="width:0%"></div></div>
+      <div class="quiz-wrap">
+        <div class="q-card on" id="q1">
+          <div class="q-num">السؤال 1 من 7</div>
+          <div class="q-txt">ما الذي يُولّد أكثر فرحة لديك في يومك الدراسي؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(1,'C')">🤝 رؤية الطلاب يتعاونون ويتعلمون من بعض</button>
+            <button class="opt" onclick="qa(1,'I')">🔍 لحظة الاكتشاف حين يجد الطالب إجابة بنفسه</button>
+            <button class="opt" onclick="qa(1,'P')">🎨 مشاهدة نتيجة ملموسة ينجزها الطلاب</button>
+            <button class="opt" onclick="qa(1,'D')">💬 نقاش حي ومحادثة فكرية عميقة</button>
+          </div>
+        </div>
+        <div class="q-card" id="q2">
+          <div class="q-num">السؤال 2 من 7</div>
+          <div class="q-txt">كيف تُفضّل شرح مفهوم جديد؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(2,'V')">📊 رسم تخطيطي أو خريطة ذهنية</button>
+            <button class="opt" onclick="qa(2,'S')">📖 قصة أو مثال من الحياة اليومية</button>
+            <button class="opt" onclick="qa(2,'E')">⚗️ تجربة أو نشاط مباشر</button>
+            <button class="opt" onclick="qa(2,'L')">🗣️ شرح منطقي خطوة بخطوة</button>
+          </div>
+        </div>
+        <div class="q-card" id="q3">
+          <div class="q-num">السؤال 3 من 7</div>
+          <div class="q-txt">ما الذي يُقلقك أكثر حين تُخطط لدرس؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(3,'M')">⏱️ الوقت وتغطية المحتوى كاملاً</button>
+            <button class="opt" onclick="qa(3,'E')">🎯 مدى تحقيق الهدف التعليمي فعلاً</button>
+            <button class="opt" onclick="qa(3,'S')">🤩 مستوى التفاعل والمشاركة</button>
+            <button class="opt" onclick="qa(3,'D')">👥 الفروق الفردية بين الطلاب</button>
+          </div>
+        </div>
+        <div class="q-card" id="q4">
+          <div class="q-num">السؤال 4 من 7</div>
+          <div class="q-txt">كيف تصف بيئة الصف المثالية لك؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(4,'C')">🔄 ديناميكية ومتحركة بأنشطة متنوعة</button>
+            <button class="opt" onclick="qa(4,'Q')">🧘 هادئة ومنظمة تُعزز التفكير العميق</button>
+            <button class="opt" onclick="qa(4,'F')">😄 ممتعة ومرنة تُشجع الإبداع</button>
+            <button class="opt" onclick="qa(4,'R')">🔬 عملية مرتبطة بمهام واقعية</button>
+          </div>
+        </div>
+        <div class="q-card" id="q5">
+          <div class="q-num">السؤال 5 من 7</div>
+          <div class="q-txt">ما الأثر الذي تريد أن يبقى في طلابك؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(5,'T')">🧠 مهارة التفكير الناقد وحل المشكلات</button>
+            <button class="opt" onclick="qa(5,'V')">💎 قيم إيجابية ومسؤولية</button>
+            <button class="opt" onclick="qa(5,'K')">📚 محبة دائمة للتعلم والاستزادة</button>
+            <button class="opt" onclick="qa(5,'C')">🤝 مهارات التعاون والتواصل الإنساني</button>
+          </div>
+        </div>
+        <div class="q-card" id="q6">
+          <div class="q-num">السؤال 6 من 7</div>
+          <div class="q-txt">ما الذي تُقيّمه أكثر في عمل الطالب؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(6,'P')">🌟 جودة التفكير والعملية</button>
+            <button class="opt" onclick="qa(6,'R')">✅ دقة الإجابات والالتزام</button>
+            <button class="opt" onclick="qa(6,'C')">🎨 الإبداع والجرأة في الطرح</button>
+            <button class="opt" onclick="qa(6,'T')">📈 التحسن والتطور مع الوقت</button>
+          </div>
+        </div>
+        <div class="q-card" id="q7">
+          <div class="q-num">السؤال 7 من 7</div>
+          <div class="q-txt">أي جملة تصف دورك كمعلم بشكل أفضل؟</div>
+          <div class="opts">
+            <button class="opt" onclick="qa(7,'G')">🗺️ مرشد يُيسّر رحلة اكتشاف الطالب</button>
+            <button class="opt" onclick="qa(7,'X')">💡 ناقل خبرة بطريقة احترافية</button>
+            <button class="opt" onclick="qa(7,'D')">🎭 مصمم تجارب تعليمية مبتكرة</button>
+            <button class="opt" onclick="qa(7,'M')">🤲 مربٍّ يهتم بالطالب كإنسان كامل</button>
+          </div>
+        </div>
+        <div class="result" id="qresult">
+          <div class="r-ico" id="rico"></div>
+          <div class="r-title" id="rtitle"></div>
+          <div class="r-desc" id="rdesc"></div>
+          <div id="rrecs"></div>
+          <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="btn btn-gold" onclick="closeModal('quiz');resetQuiz();document.getElementById('strategies').scrollIntoView({behavior:'smooth'})">🔍 استكشف الاستراتيجيات</button>
+            <button class="btn" style="border:2px solid var(--navy);color:var(--navy)" onclick="resetQuiz()">🔄 إعادة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <p>© 2025 منصة استراتيجيات التعليم الفعّال | <strong>صلالة الشرقية للتعليم الأساسي</strong></p>
+  <p style="margin-top:6px;font-size:.76rem;opacity:.4">الأستاذ فيصل العريبي — تقنية المعلومات</p>
+</footer>
+
+<script>
+// ── NAV ──
+document.getElementById('hbg').onclick=()=>document.getElementById('navLinks').classList.toggle('open');
+
+// ── TABS ──
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    document.getElementById(t.dataset.tab).classList.add('on');
+  };
+});
+
+// ── ACCORDION ──
+document.addEventListener('click',e=>{
+  const h=e.target.closest('.ac-head');
+  if(!h)return;
+  const ac=h.closest('.ac');
+  const isOpen=ac.classList.contains('open');
+  ac.closest('.ac-list').querySelectorAll('.ac').forEach(a=>a.classList.remove('open'));
+  if(!isOpen)ac.classList.add('open');
+});
+
+// ── COUNTER ──
+const nums=document.querySelectorAll('.stat-num');
+const io=new IntersectionObserver(en=>{
+  en.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,v=+el.dataset.v,s=el.dataset.s||'';
+    let c=0;const step=v/50;
+    const t=setInterval(()=>{c=Math.min(c+step,v);el.textContent=Math.round(c)+s;if(c>=v)clearInterval(t);},28);
+    io.unobserve(el);
+  });
+},{threshold:.5});
+nums.forEach(n=>io.observe(n));
+
+// ── SCROLL REVEAL ──
+const sr=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';sr.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.s-card,.info-card,.impl-card,.res-card').forEach(el=>{
+  el.style.cssText+='opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease';
+  sr.observe(el);
+});
+
+// ── ACTIVE NAV ──
+const secs=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('on',a.getAttribute('href')==='#'+cur);
+  });
+});
+
+// ── MODALS ──
+function openModal(id){document.getElementById('modal-'+id).classList.add('open');}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click',e=>{if(e.target===o){const id=o.id.replace('modal-','');closeModal(id);if(id==='quiz')resetQuiz();}});
+});
+
+// ── PLANNER ──
+function genPlan(){
+  const subj=document.getElementById('pm-subj').value;
+  const grade=document.getElementById('pm-grade').value;
+  const title=document.getElementById('pm-title').value||'الدرس';
+  const goal=document.getElementById('pm-goal').value||'—';
+  const strat=document.getElementById('pm-strat').value;
+  const dur=+document.getElementById('pm-dur').value;
+  const mat=document.getElementById('pm-mat').value||'تُحدد لاحقاً';
+  const t=Math.round(dur*.15),m1=Math.round(dur*.25),m2=Math.round(dur*.35),c=dur-t-m1-m2;
+  const pm={
+    'التعلم التعاوني':{a:'تقسيم المجموعات والتهيئة',b:'العمل الجماعي على المهمة',c:'العرض وتبادل التغذية الراجعة'},
+    'حل المشكلات':{a:'طرح المشكلة وإثارة الفضول',b:'التحليل ووضع الفرضيات',c:'التطبيق والتحقق من الحل'},
+    'default':{a:'الاستكشاف وتنشيط المعرفة السابقة',b:'التنفيذ وبناء المفاهيم',c:'التعمّق والربط بالواقع'},
+  };
+  const ph=pm[strat]||pm.default;
+  document.getElementById('plan-content').innerHTML=`
+    <div class="plan-row"><div class="plan-lbl">المادة / الصف</div><div>${subj} — ${grade}</div></div>
+    <div class="plan-row"><div class="plan-lbl">عنوان الدرس</div><div>${title}</div></div>
+    <div class="plan-row"><div class="plan-lbl">الهدف</div><div>${goal}</div></div>
+    <div class="plan-row"><div class="plan-lbl">الاستراتيجية</div><div><strong>${strat}</strong></div></div>
+    <div class="plan-row"><div class="plan-lbl">الوسائل</div><div>${mat}</div></div>
+    <div style="margin-top:16px">
+      <div style="font-weight:700;color:var(--navy);margin-bottom:10px;font-size:.9rem">📌 مراحل الدرس</div>
+      <div class="phase"><div class="pt">🔔 التمهيد والتهيئة</div><div class="pm">⏱ ${t} دقيقة</div><div class="pd">استثارة الطلاب بسؤال أو موقف من الحياة يرتبط بـ"${title}".</div></div>
+      <div class="phase"><div class="pt">🚀 ${ph.a}</div><div class="pm">⏱ ${m1} دقيقة</div><div class="pd">المرحلة الأولى من تطبيق استراتيجية "${strat}".</div></div>
+      <div class="phase"><div class="pt">⚡ ${ph.b}</div><div class="pm">⏱ ${m2} دقيقة</div><div class="pd">المرحلة الثانية مع التعمّق في المحتوى.</div></div>
+      <div class="phase"><div class="pt">🏁 الإغلاق والتقييم الختامي</div><div class="pm">⏱ ${c} دقيقة</div><div class="pd">تلخيص + بطاقة خروج أو سؤال تفكير + توجيه للواجب.</div></div>
+    </div>
+  `;
+  document.getElementById('plan-out').style.display='block';
+}
+
+// ── QUIZ ──
+let qans={},qcur=1;
+function qa(q,v){
+  qans[q]=v;
+  document.getElementById('q'+q).querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));
+  event.target.classList.add('sel');
+  setTimeout(()=>{
+    document.getElementById('q'+q).classList.remove('on');
+    if(q<7){qcur=q+1;document.getElementById('q'+qcur).classList.add('on');document.getElementById('qfill').style.width=(qcur-1)/7*100+'%';}
+    else{document.getElementById('qfill').style.width='100%';showResult();}
+  },300);
+}
+const profiles=[
+  {ico:'🤝',title:'المعلم التعاوني الاجتماعي',desc:'تؤمن بأن التعلم تجربة اجتماعية بامتياز. تزدهر حين يتفاعل طلابك ويتعلمون من بعضهم.',recs:['التعلم التعاوني والعمل الجماعي','المناقشة الصفية المنظمة','التعلم بالأقران (Peer Learning)']},
+  {ico:'🔍',title:'المعلم الاستقصائي الباحث',desc:'تعشق لحظة الاكتشاف وتؤمن بأن الطالب يجب أن يبني معرفته بيده.',recs:['التعلم الاستقصائي 5E','التجريب والملاحظة العلمية','التعلم القائم على المشكلات']},
+  {ico:'🎨',title:'المعلم المصمم الإبداعي',desc:'تُصمّم تجارب تعلّم لا تُنسى، تفكر في الدرس كمشروع إبداعي.',recs:['التعلم بالمشاريع','لعب الأدوار والمحاكاة','التعلم بالألعاب (Gamification)']},
+  {ico:'🗺️',title:'المعلم المرشد الموجّه',desc:'دورك توجيه الطالب نحو اكتشاف ذاته، تُصمّم المسارات وتترك الحرية.',recs:['التعلم المتمايز','الخرائط المفاهيمية','التعلم الذاتي الموجّه']},
+];
+function showResult(){
+  const p=profiles[Math.floor(Math.random()*profiles.length)];
+  document.getElementById('rico').textContent=p.ico;
+  document.getElementById('rtitle').textContent=p.title;
+  document.getElementById('rdesc').textContent=p.desc;
+  document.getElementById('rrecs').innerHTML=p.recs.map(r=>`<div class="rec">✦ ${r}</div>`).join('');
+  document.getElementById('qresult').style.display='block';
+}
+function resetQuiz(){
+  qans={};qcur=1;
+  document.querySelectorAll('.q-card').forEach(c=>c.classList.remove('on'));
+  document.getElementById('q1').classList.add('on');
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  document.getElementById('qfill').style.width='0%';
+  document.getElementById('qresult').style.display='none';
+}
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});document.getElementById('navLinks').classList.remove('open');}
+  });
+});
+</script>
+</body>
+</html>
