@@ -1,1 +1,247 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مخطط الدرس | استراتيجيات التعليم</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .planner-form { background:var(--white);border-radius:var(--radius);padding:36px;box-shadow:var(--card-shadow);max-width:760px;margin:auto; }
+    .form-group { margin-bottom:22px; }
+    label { display:block;font-weight:700;color:var(--primary);margin-bottom:8px;font-size:0.92rem; }
+    input,select,textarea {
+      width:100%;padding:11px 14px;border:2px solid #e0dbd2;border-radius:var(--radius-sm);
+      font-family:'Tajawal',sans-serif;font-size:0.92rem;color:var(--text);
+      background:var(--surface);transition:border-color 0.2s;
+    }
+    input:focus,select:focus,textarea:focus { outline:none;border-color:var(--accent); }
+    textarea { resize:vertical;min-height:90px; }
+    .form-row { display:grid;grid-template-columns:1fr 1fr;gap:18px; }
+    .output-section { max-width:760px;margin:28px auto 0; }
+    .plan-output { background:var(--white);border-radius:var(--radius);padding:36px;box-shadow:var(--card-shadow);display:none; }
+    .plan-output h3 { color:var(--primary);font-size:1.3rem;font-weight:900;margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid var(--accent);font-family:'Noto Naskh Arabic',serif; }
+    .plan-row { display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f0ece3;font-size:0.9rem; }
+    .plan-row .plan-label { font-weight:700;color:var(--primary-light);min-width:140px; }
+    .plan-row .plan-val { color:var(--text);flex:1;line-height:1.6; }
+    .phase { background:#faf8f4;border-right:3px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:14px 18px;margin:10px 0; }
+    .phase .phase-title { font-weight:700;color:var(--primary);margin-bottom:4px; }
+    .phase .phase-time { color:var(--accent);font-size:0.82rem;font-weight:700; }
+    @media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand">
+      <div class="brand-icon">📚</div>
+      <div>
+        <div class="brand-text">استراتيجيات التعليم</div>
+        <div class="brand-sub">دليل المعلم الاحترافي</div>
+      </div>
+    </a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html#strategies">الاستراتيجيات</a>
+      <a href="../index.html#subjects">المواد الدراسية</a>
+      <a href="../index.html#resources">الموارد</a>
+      <a href="about.html">عن المنصة</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:60px 24px 50px;">
+  <div class="hero-content">
+    <div class="hero-badge">🗓️ أداة تفاعلية</div>
+    <h1>مخطط الدرس التفاعلي</h1>
+    <p>أدخل تفاصيل درسك واحصل على خطة درس احترافية جاهزة تتضمن الاستراتيجية المختارة ومراحل التنفيذ</p>
+  </div>
+</section>
+
+<div class="section">
+  <div class="planner-form">
+    <h2 style="color:var(--primary);font-size:1.2rem;font-weight:700;margin-bottom:24px;">📝 بيانات الدرس</h2>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label>المادة الدراسية</label>
+        <select id="subject">
+          <option value="">-- اختر المادة --</option>
+          <option>اللغة العربية</option>
+          <option>اللغة الإنجليزية</option>
+          <option>الرياضيات</option>
+          <option>التربية الإسلامية</option>
+          <option>العلوم</option>
+          <option>الأحياء</option>
+          <option>الكيمياء</option>
+          <option>الفيزياء</option>
+          <option>تقنية المعلومات</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>الصف الدراسي</label>
+        <select id="grade">
+          <option value="">-- اختر الصف --</option>
+          <option>الصف الخامس</option>
+          <option>الصف السادس</option>
+          <option>الصف السابع</option>
+          <option>الصف الثامن</option>
+          <option>الصف التاسع</option>
+          <option>الصف العاشر</option>
+          <option>الصف الحادي عشر</option>
+          <option>الصف الثاني عشر</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>عنوان الدرس</label>
+      <input type="text" id="lessonTitle" placeholder="مثال: الضرب في الكسور العشرية">
+    </div>
+
+    <div class="form-group">
+      <label>الهدف العام من الدرس</label>
+      <textarea id="goal" placeholder="ما الذي تريد أن يتعلمه الطالب في نهاية الدرس؟"></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>الاستراتيجية المقترحة</label>
+        <select id="strategy">
+          <option value="">-- اختر الاستراتيجية --</option>
+          <option>التعلم التعاوني</option>
+          <option>حل المشكلات</option>
+          <option>التعلم بالمشاريع</option>
+          <option>لعب الأدوار</option>
+          <option>الاستقصاء والبحث</option>
+          <option>الفصل المقلوب</option>
+          <option>العصف الذهني</option>
+          <option>الخرائط المفاهيمية</option>
+          <option>التعلم القائم على المهمة</option>
+          <option>دراسة الحالة</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>مدة الحصة (بالدقائق)</label>
+        <select id="duration">
+          <option value="40">40 دقيقة</option>
+          <option value="45" selected>45 دقيقة</option>
+          <option value="50">50 دقيقة</option>
+          <option value="60">60 دقيقة</option>
+          <option value="90">90 دقيقة</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>الوسائل والمواد المتاحة</label>
+      <input type="text" id="materials" placeholder="مثال: سبورة، أجهزة لوحية، ورق مقوى، مختبر">
+    </div>
+
+    <button class="btn btn-primary" style="width:100%;justify-content:center;font-size:1rem;" onclick="generatePlan()">
+      ✨ إنشاء خطة الدرس
+    </button>
+  </div>
+
+  <div class="output-section">
+    <div class="plan-output" id="planOutput">
+      <h3>📋 خطة الدرس المُولَّدة</h3>
+      <div id="planContent"></div>
+      <div style="margin-top:24px;text-align:center;">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ طباعة الخطة</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 منصة استراتيجيات التعليم الفعّال | <strong>صلالة الشرقية للتعليم الأساسي</strong></p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+function generatePlan() {
+  const subject = document.getElementById('subject').value;
+  const grade = document.getElementById('grade').value;
+  const title = document.getElementById('lessonTitle').value;
+  const goal = document.getElementById('goal').value;
+  const strategy = document.getElementById('strategy').value;
+  const duration = parseInt(document.getElementById('duration').value);
+  const materials = document.getElementById('materials').value;
+
+  if (!subject || !grade || !title || !strategy) {
+    alert('يرجى ملء الحقول الأساسية: المادة، الصف، عنوان الدرس، والاستراتيجية.');
+    return;
+  }
+
+  const intro = Math.round(duration * 0.15);
+  const main1 = Math.round(duration * 0.25);
+  const main2 = Math.round(duration * 0.35);
+  const closure = duration - intro - main1 - main2;
+
+  const phaseMap = {
+    'التعلم التعاوني': [
+      { title: 'التمهيد وتقسيم المجموعات', desc: `تقديم موضوع "${title}" وتقسيم الطلاب إلى مجموعات من 4-5، وتوزيع الأدوار.` },
+      { title: 'النشاط الجماعي', desc: 'كل مجموعة تعمل على المهمة المحددة بالتعاون مع الرجوع للمصادر.' },
+      { title: 'العرض والمناقشة', desc: 'عرض كل مجموعة لنتائجها وتبادل التغذية الراجعة.' }
+    ],
+    'حل المشكلات': [
+      { title: 'طرح المشكلة', desc: `تقديم مشكلة حقيقية متعلقة بـ"${title}" تستفز تفكير الطلاب.` },
+      { title: 'التحليل والفرضيات', desc: 'الطلاب يُحللون المشكلة ويضعون فرضيات حل.' },
+      { title: 'التطبيق والتحقق', desc: 'تطبيق الحلول والتحقق من صحتها ومناقشة النتائج.' }
+    ],
+    'default': [
+      { title: 'الاستكشاف والتنشيط', desc: `ربط "${title}" بالمعرفة السابقة وإثارة الفضول.` },
+      { title: 'التنفيذ والبناء', desc: `تطبيق استراتيجية "${strategy}" على محتوى الدرس.` },
+      { title: 'التعمّق والتمييز', desc: 'معالجة الأفكار المعقدة وتعزيز الفهم العميق.' }
+    ]
+  };
+
+  const phases = phaseMap[strategy] || phaseMap['default'];
+
+  const html = `
+    <div class="plan-row"><div class="plan-label">المادة</div><div class="plan-val">${subject} — ${grade}</div></div>
+    <div class="plan-row"><div class="plan-label">عنوان الدرس</div><div class="plan-val">${title}</div></div>
+    <div class="plan-row"><div class="plan-label">الهدف العام</div><div class="plan-val">${goal || 'يُحدد لاحقاً'}</div></div>
+    <div class="plan-row"><div class="plan-label">الاستراتيجية</div><div class="plan-val"><strong>${strategy}</strong></div></div>
+    <div class="plan-row"><div class="plan-label">المدة الكلية</div><div class="plan-val">${duration} دقيقة</div></div>
+    <div class="plan-row"><div class="plan-label">الوسائل</div><div class="plan-val">${materials || 'تُحدد حسب توافر الموارد'}</div></div>
+
+    <div style="margin-top:24px;">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:14px;font-size:1rem;">📌 مراحل تنفيذ الدرس</div>
+      <div class="phase">
+        <div class="phase-title">🔔 مرحلة التمهيد والتهيئة</div>
+        <div class="phase-time">⏱ ${intro} دقيقة</div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">استثارة اهتمام الطلاب بسؤال محفّز أو موقف من الحياة اليومية يرتبط بموضوع "${title}".</p>
+      </div>
+      <div class="phase">
+        <div class="phase-title">🚀 ${phases[0].title}</div>
+        <div class="phase-time">⏱ ${main1} دقيقة</div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">${phases[0].desc}</p>
+      </div>
+      <div class="phase">
+        <div class="phase-title">⚡ ${phases[1].title}</div>
+        <div class="phase-time">⏱ ${main2} دقيقة</div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">${phases[1].desc}</p>
+      </div>
+      <div class="phase">
+        <div class="phase-title">🏁 الإغلاق والتقييم الختامي</div>
+        <div class="phase-time">⏱ ${closure} دقيقة</div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">تلخيص الطلاب لأهم ما تعلموه، وتقييم قصير (بطاقة خروج أو سؤال تفكير)، وتوجيه للواجب.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;padding:16px;background:rgba(200,150,46,0.08);border-radius:var(--radius-sm);border:1px dashed var(--accent);">
+      <div style="font-weight:700;color:var(--primary);margin-bottom:8px;">📊 التقييم المقترح</div>
+      <p style="font-size:0.85rem;color:var(--text-muted);">ملاحظة أداء الطلاب أثناء التطبيق + بطاقة خروج (سؤال واحد يُجيب عنه الطالب قبل مغادرة الصف) + متابعة الواجب في الحصة القادمة.</p>
+    </div>
+  `;
+
+  document.getElementById('planContent').innerHTML = html;
+  document.getElementById('planOutput').style.display = 'block';
+  document.getElementById('planOutput').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
