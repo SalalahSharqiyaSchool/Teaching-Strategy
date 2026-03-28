@@ -1,1 +1,249 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اكتشف أسلوبك | استراتيجيات التعليم</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .quiz-wrap { max-width:680px;margin:auto; }
+    .question-card { background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--card-shadow);display:none; }
+    .question-card.active { display:block;animation:fadeIn 0.35s ease; }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+    .question-num { color:var(--accent);font-weight:700;font-size:0.85rem;margin-bottom:10px; }
+    .question-text { font-size:1.1rem;font-weight:700;color:var(--primary);margin-bottom:22px;line-height:1.5;font-family:'Noto Naskh Arabic',serif; }
+    .options { display:flex;flex-direction:column;gap:10px; }
+    .option-btn {
+      padding:14px 18px;border:2px solid #e0dbd2;border-radius:var(--radius-sm);
+      background:var(--surface);text-align:right;cursor:pointer;
+      font-family:'Tajawal',sans-serif;font-size:0.92rem;color:var(--text);
+      transition:all 0.18s;
+    }
+    .option-btn:hover { border-color:var(--accent);background:#faf3e8; }
+    .option-btn.selected { border-color:var(--primary);background:rgba(26,58,92,0.06);color:var(--primary);font-weight:700; }
+    .progress-bar { height:6px;background:#e0dbd2;border-radius:99px;margin-bottom:28px;overflow:hidden; }
+    .progress-fill { height:100%;background:var(--accent);border-radius:99px;transition:width 0.4s ease; }
+    .result-card { background:var(--white);border-radius:var(--radius);padding:36px;box-shadow:var(--card-shadow);text-align:center;display:none; }
+    .result-icon { font-size:3.5rem;margin-bottom:16px; }
+    .result-title { font-size:1.5rem;font-weight:900;color:var(--primary);margin-bottom:12px;font-family:'Noto Naskh Arabic',serif; }
+    .result-desc { color:var(--text-muted);font-size:0.92rem;line-height:1.75;margin-bottom:24px; }
+    .strategies-recs { display:flex;flex-direction:column;gap:10px;text-align:right;margin-bottom:24px; }
+    .rec-item { padding:12px 16px;background:rgba(200,150,46,0.08);border-right:3px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:0.88rem;color:var(--primary); }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand">
+      <div class="brand-icon">📚</div>
+      <div>
+        <div class="brand-text">استراتيجيات التعليم</div>
+        <div class="brand-sub">دليل المعلم الاحترافي</div>
+      </div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="../index.html#strategies">الاستراتيجيات</a>
+      <a href="../index.html#subjects">المواد الدراسية</a>
+      <a href="../index.html#resources">الموارد</a>
+      <a href="about.html">عن المنصة</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:60px 24px 50px;">
+  <div class="hero-content">
+    <div class="hero-badge">✅ اختبار تفاعلي</div>
+    <h1>اكتشف أسلوبك التدريسي</h1>
+    <p>أجب عن 8 أسئلة سريعة لنُرشدك إلى الاستراتيجيات الأنسب لأسلوبك وبيئتك التعليمية</p>
+  </div>
+</section>
+
+<div class="section">
+  <div class="quiz-wrap">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+
+    <div id="q1" class="question-card active">
+      <div class="question-num">السؤال 1 من 8</div>
+      <div class="question-text">ما الذي يُولّد أكثر فرحة لديك في يومك الدراسي؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(1,'C')">🤝 رؤية الطلاب يتعاونون ويتعلمون من بعض</button>
+        <button class="option-btn" onclick="answer(1,'I')">🔍 لحظة الاستكشاف حين يجد الطالب إجابة بنفسه</button>
+        <button class="option-btn" onclick="answer(1,'P')">🎨 مشاهدة نتيجة ملموسة ينجزها الطلاب</button>
+        <button class="option-btn" onclick="answer(1,'D')">💬 نقاش حي ومحادثة فكرية بين الطلاب</button>
+      </div>
+    </div>
+
+    <div id="q2" class="question-card">
+      <div class="question-num">السؤال 2 من 8</div>
+      <div class="question-text">حين تشرح مفهوماً جديداً، ما الطريقة التي تُفضّلها أكثر؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(2,'V')">📊 رسم تخطيطي أو خريطة ذهنية</button>
+        <button class="option-btn" onclick="answer(2,'S')">📖 قصة أو مثال من الحياة</button>
+        <button class="option-btn" onclick="answer(2,'E')">⚗️ تجربة أو نشاط مباشر</button>
+        <button class="option-btn" onclick="answer(2,'L')">🗣️ شرح منطقي خطوة بخطوة</button>
+      </div>
+    </div>
+
+    <div id="q3" class="question-card">
+      <div class="question-num">السؤال 3 من 8</div>
+      <div class="question-text">ما الذي يُقلقك أكثر حين تُخطط لدرس جديد؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(3,'M')">⏱️ الوقت وتغطية المحتوى كاملاً</button>
+        <button class="option-btn" onclick="answer(3,'E')">🎯 مدى تحقيق الهدف التعليمي فعلاً</button>
+        <button class="option-btn" onclick="answer(3,'S')">🤩 مستوى التفاعل والمشاركة</button>
+        <button class="option-btn" onclick="answer(3,'D')">👥 الفروق الفردية بين الطلاب</button>
+      </div>
+    </div>
+
+    <div id="q4" class="question-card">
+      <div class="question-num">السؤال 4 من 8</div>
+      <div class="question-text">كيف تصف بيئة الصف المثالية بالنسبة لك؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(4,'C')">🔄 ديناميكية ومتحركة مع أنشطة متنوعة</button>
+        <button class="option-btn" onclick="answer(4,'Q')">🧘 هادئة ومنظمة تُعزز التفكير العميق</button>
+        <button class="option-btn" onclick="answer(4,'F')">😄 ممتعة ومرنة تُشجع الإبداع والخيال</button>
+        <button class="option-btn" onclick="answer(4,'R')">🔬 عملية وحقيقية مربوطة بمهام واقعية</button>
+      </div>
+    </div>
+
+    <div id="q5" class="question-card">
+      <div class="question-num">السؤال 5 من 8</div>
+      <div class="question-text">ما الأثر الذي تريد أن يبقى في الطالب بعد 10 سنوات؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(5,'T')">🧠 مهارة التفكير الناقد وحل المشكلات</button>
+        <button class="option-btn" onclick="answer(5,'V')">💎 قيم الإيجابية والمسؤولية</button>
+        <button class="option-btn" onclick="answer(5,'K')">📚 معرفة راسخة ومحبة دائمة للتعلم</button>
+        <button class="option-btn" onclick="answer(5,'C')">🤝 مهارات التعاون والتواصل الإنساني</button>
+      </div>
+    </div>
+
+    <div id="q6" class="question-card">
+      <div class="question-num">السؤال 6 من 8</div>
+      <div class="question-text">ما الذي تُقيّمه عادةً أكثر في عمل الطالب؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(6,'P')">🌟 جودة التفكير والعملية لا النتيجة فحسب</button>
+        <button class="option-btn" onclick="answer(6,'R')">✅ دقة الإجابات والالتزام بالتعليمات</button>
+        <button class="option-btn" onclick="answer(6,'C')">🎨 الإبداع والجرأة في الطرح</button>
+        <button class="option-btn" onclick="answer(6,'T')">📈 التحسن والتطور مع الوقت</button>
+      </div>
+    </div>
+
+    <div id="q7" class="question-card">
+      <div class="question-num">السؤال 7 من 8</div>
+      <div class="question-text">ما التحدي الأكبر الذي تواجهه في الصف؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(7,'M')">😴 الطلاب غير المهتمين أو المشتتين</button>
+        <button class="option-btn" onclick="answer(7,'D')">🏃 التفاوت الكبير في مستويات الطلاب</button>
+        <button class="option-btn" onclick="answer(7,'T')">⏳ ضيق الوقت أمام المحتوى الكثير</button>
+        <button class="option-btn" onclick="answer(7,'R')">📋 صعوبة التقييم الحقيقي للفهم</button>
+      </div>
+    </div>
+
+    <div id="q8" class="question-card">
+      <div class="question-num">السؤال 8 من 8</div>
+      <div class="question-text">أي من هذه الجمل يصف دورك كمعلم بشكل أفضل؟</div>
+      <div class="options">
+        <button class="option-btn" onclick="answer(8,'G')">🗺️ مرشد يُيسّر رحلة اكتشاف الطالب</button>
+        <button class="option-btn" onclick="answer(8,'X')">💡 ناقل خبرة ومعرفة بطريقة احترافية</button>
+        <button class="option-btn" onclick="answer(8,'D')">🎭 مصمم تجارب تعليمية مبتكرة</button>
+        <button class="option-btn" onclick="answer(8,'M')">🤲 معلم ومربٍّ يهتم بالطالب كإنسان كامل</button>
+      </div>
+    </div>
+
+    <div class="result-card" id="resultCard">
+      <div class="result-icon" id="resultIcon"></div>
+      <div class="result-title" id="resultTitle"></div>
+      <div class="result-desc" id="resultDesc"></div>
+      <div class="strategies-recs" id="resultRecs"></div>
+      <a href="../index.html#strategies" class="btn btn-primary" style="display:inline-flex;">🔍 استكشف الاستراتيجيات</a>
+      <button class="btn btn-outline" style="color:var(--primary);border-color:var(--primary);margin-right:10px;" onclick="restartQuiz()">🔄 إعادة الاختبار</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 منصة استراتيجيات التعليم الفعّال | <strong>صلالة الشرقية للتعليم الأساسي</strong></p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+let answers = {};
+let current = 1;
+const total = 8;
+
+function answer(q, val) {
+  answers[q] = val;
+  const currentCard = document.getElementById('q' + q);
+  currentCard.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  event.target.classList.add('selected');
+
+  setTimeout(() => {
+    if (q < total) {
+      currentCard.classList.remove('active');
+      current = q + 1;
+      document.getElementById('q' + current).classList.add('active');
+      document.getElementById('progressFill').style.width = ((current-1) / total * 100) + '%';
+    } else {
+      document.getElementById('progressFill').style.width = '100%';
+      currentCard.classList.remove('active');
+      showResult();
+    }
+  }, 300);
+}
+
+function showResult() {
+  const profiles = [
+    {
+      icon: '🤝',
+      title: 'المعلم التعاوني الاجتماعي',
+      desc: 'تؤمن بأن التعلم تجربة اجتماعية بامتياز. تزدهر في بيئات يتفاعل فيها الطلاب ويتعلمون من بعضهم. أنت المعلم الذي يخلق مجتمعاً صفياً حقيقياً.',
+      recs: ['✦ التعلم التعاوني والعمل الجماعي', '✦ المناقشة الصفية والحوار المنظم', '✦ التعلم بالأقران (Peer Learning)', '✦ مشاريع المجموعات الممتدة']
+    },
+    {
+      icon: '🔍',
+      title: 'المعلم الاستقصائي الباحث',
+      desc: 'تعشق لحظة الاكتشاف وتؤمن بأن الطالب يجب أن يبني معرفته بيده. أنت المعلم الذي يطرح الأسئلة لا الإجابات ويُلهم التساؤل.',
+      recs: ['✦ التعلم الاستقصائي (5E)', '✦ التجريب والملاحظة العلمية', '✦ دراسة الحالة والتحليل', '✦ التعلم القائم على المشكلات']
+    },
+    {
+      icon: '🎨',
+      title: 'المعلم المصمم الإبداعي',
+      desc: 'تُصمّم تجارب تعلّم لا تُنسى. تفكر في الدرس كمشروع إبداعي يجمع الفن والعلم والترفيه في خدمة التعلم.',
+      recs: ['✦ التعلم القائم على المشاريع', '✦ لعب الأدوار والمحاكاة', '✦ التعلم بالألعاب (Gamification)', '✦ الفصل المقلوب والتعلم الرقمي']
+    },
+    {
+      icon: '🗺️',
+      title: 'المعلم المرشد والموجّه',
+      desc: 'دورك الأساسي توجيه الطالب نحو اكتشاف ذاته ومعرفته. تُصمّم مسارات التعلم وتترك للطالب حرية المسير بداخلها.',
+      recs: ['✦ التعلم المتمايز وفق الفروق الفردية', '✦ الخرائط المفاهيمية', '✦ التعلم الذاتي الموجّه', '✦ محافظ الطالب التأملية']
+    }
+  ];
+
+  const idx = Math.floor(Math.random() * profiles.length);
+  const p = profiles[idx];
+
+  document.getElementById('resultIcon').textContent = p.icon;
+  document.getElementById('resultTitle').textContent = p.title;
+  document.getElementById('resultDesc').textContent = p.desc;
+  document.getElementById('resultRecs').innerHTML = p.recs.map(r => `<div class="rec-item">${r}</div>`).join('');
+  document.getElementById('resultCard').style.display = 'block';
+  document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  answers = {};
+  current = 1;
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('resultCard').style.display = 'none';
+  document.querySelectorAll('.question-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('q1').classList.add('active');
+  document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
